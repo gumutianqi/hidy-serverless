@@ -1,0 +1,31 @@
+####
+# This Dockerfile is used in order to build a distroless container that runs the Quarkus application in native (no JVM) mode
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.native-distroless -t hub.docker.com/<Namespace>/<Tag>:v2.0 .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 9000:9000 quarkus/getting-started
+#
+
+## Stage 1 : build with maven builder image with native capabilities
+FROM quay.io/quarkus/centos-quarkus-maven:21.3-java11 AS build
+COPY src/main/docker/settings.xml .m2/
+COPY pom.xml /usr/src/app/
+RUN mvn -f /usr/src/app/pom.xml -B de.qaware.maven:go-offline-maven-plugin:1.2.5:resolve-dependencies -s .m2/settings.xml -q
+COPY src /usr/src/app/src
+USER root
+RUN chown -R quarkus /usr/src/app
+USER quarkus
+RUN mvn -f /usr/src/app/pom.xml -Pnative clean package -s .m2/settings.xml -q
+
+## Stage 2 : create the docker final image
+FROM quay.io/quarkus/quarkus-distroless-image:1.0
+COPY --from=build /usr/src/app/target/*-runner /application
+
+EXPOSE 9000
+USER nonroot
+
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]

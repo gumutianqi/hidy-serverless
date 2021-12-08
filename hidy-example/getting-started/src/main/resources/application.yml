@@ -1,0 +1,33 @@
+## Configuration for App
+## Just for PROD profile
+"%prod":
+  quarkus:
+    http:
+      port: 9000
+
+## Quarkus 配置
+quarkus:
+  http:
+    port: 8080
+    non-application-root-path: ${quarkus.http.root-path}
+  jackson:
+    timezone: UTC+8
+  log:
+    console:
+      async:
+        enable: true
+      level: INFO
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
+    category:
+      "com.github.getting.started":
+        level: DEBUG
+
+#################################################################
+
+## 自定义配置
+hidy:
+  application:
+    app-id: "1001"
+    app-name: getting-started
+    version: v1.0.0
+    description: "I am example project."

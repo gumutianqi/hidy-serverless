@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.lakex</groupId>
+    <artifactId>hidy-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>hidy-dependencies</name>
+    <description>
+        hidy-serverless framework maven dependencies management
+    </description>
+
+    <url>https://hidy.lakex.cn</url>
+
+    <developers>
+        <developer>
+            <name>LarryKoo</name>
+            <email>larrykoo@126.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+
+        <!-- Maven Plugin -->
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.test.skip>true</maven.test.skip>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-findbugs-maven-plugin.version>3.0.5</maven-findbugs-maven-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <javadoc.skip>true</javadoc.skip>
+        <gpg.skip>false</gpg.skip>
+
+        <!-- ===================== The third party ===================== -->
+
+        <!-- OpenSources BOM -->
+
+        <!-- Quarkus -->
+        <quarkus-plugin.version>2.5.1.Final</quarkus-plugin.version>
+        <quarkus.platform.version>2.5.1.Final</quarkus.platform.version>
+
+        <!-- Utils -->
+        <lombok.version>1.18.22</lombok.version>
+        <okhttp3.version>4.9.3</okhttp3.version>
+        <okio.version>2.10.0</okio.version>
+        <jsoup.version>1.14.3</jsoup.version>
+        <jackson-dataformat-cbor.version>2.13.0</jackson-dataformat-cbor.version>
+        <snappy-java.version>1.1.8.4</snappy-java.version>
+        <commons-long3.version>3.12.0</commons-long3.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <log4j2-jboss-logmanager.version>1.0.0.Final</log4j2-jboss-logmanager.version>
+        <!-- Data Source -->
+
+        <jjwt.version>0.11.2</jjwt.version>
+        <fastjson.version>1.2.78</fastjson.version>
+
+        <!-- Google OpenSources -->
+        <google.guava.version>31.0.1-jre</google.guava.version>
+        <google.zxing.version>3.4.1</google.zxing.version>
+        <google.tink.version>1.6.1</google.tink.version>
+        <google.findbugs.version>3.0.1</google.findbugs.version>
+
+        <!-- Java Util -->
+        <jakarta.validation-api.version>3.0.1</jakarta.validation-api.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+
+        <!-- WeChat Platform SDK -->
+        <!-- https://github.com/Wechat-Group/WxJava -->
+        <weixin-java-tools.version>4.2.0</weixin-java-tools.version> <!-- just version -->
+
+        <!-- Aliyun Service SDK -->
+        <aliyun-java-sdk-core.version>4.5.30</aliyun-java-sdk-core.version>
+        <aliyun-tablestore.version>5.13.0</aliyun-tablestore.version>
+
+        <!-- Aliyun Function SDK -->
+        <aliyun-java-sdk-fc.version>1.8.29</aliyun-java-sdk-fc.version>
+        <fc-java-common.version>2.2.2</fc-java-common.version>
+        <fc-java-core.version>1.4.0</fc-java-core.version>
+        <fc-java-event.version>1.1</fc-java-event.version>
+
+        <!-- test -->
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+    </properties>
+
+    <!-- All basic dependency management -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-universe-bom</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Utils -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>${okio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-cbor</artifactId>
+                <version>${jackson-dataformat-cbor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xerial.snappy</groupId>
+                <artifactId>snappy-java</artifactId>
+                <version>${snappy-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-long3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>log4j2-jboss-logmanager</artifactId>
+                <version>${log4j2-jboss-logmanager.version}</version>
+            </dependency>
+
+            <!-- Data Source -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- Alibaba openSources -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- Google OpenSources -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${google.zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.crypto.tink</groupId>
+                <artifactId>tink</artifactId>
+                <version>${google.tink.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>findbugs</artifactId>
+                <version>${google.findbugs.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${google.findbugs.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Java Util -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <!-- Aliyun Service SDK -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>tablestore</artifactId>
+                <version>${aliyun-tablestore.version}</version>
+            </dependency>
+
+            <!-- Aliyun Function SDK -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-fc</artifactId>
+                <version>${aliyun-java-sdk-fc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.fc.runtime</groupId>
+                <artifactId>fc-java-core</artifactId>
+                <version>${fc-java-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.fc.runtime</groupId>
+                <artifactId>fc-java-common</artifactId>
+                <version>${fc-java-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.fc.runtime</groupId>
+                <artifactId>fc-java-event</artifactId>
+                <version>${fc-java-event.version}</version>
+            </dependency>
+
+            <!-- TestCase -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- build configuration -->
+    <build>
+        <defaultGoal>package</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- set the accept resource files -->
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.cfg</include>
+                    <include>**/*.tld</include>
+                    <include>**/*.xsd</include>
+                    <include>**/*.drl</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.ftl</include>
+                    <include>**/*.btl</include>
+                    <include>**/*.json</include>
+                    <include>**/*.factories</include>
+                    <include>**/*.sql</include>
+                    <include>**/*.md</include>
+                    <include>**/*.db</include>
+                    <include>**/*.types</include>
+                    <include>**/*.jar</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <pluginManagement>
+            <!-- Upgrade Maven super pom versions -->
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-maven-plugin</artifactId>
+                    <version>${quarkus-plugin.version}</version>
+                    <extensions>true</extensions>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>generate-code</goal>
+                                <goal>generate-code-tests</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <appendAssemblyId>false</appendAssemblyId>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <parameters>true</parameters>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <compilerVersion>${java.version}</compilerVersion>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <showWarnings>true</showWarnings>
+                        <compilerArgument>-Xlint:unchecked</compilerArgument>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                            <maven.home>${maven.home}</maven.home>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 基于 Profiles 的 灵活仓库配置 -->
+    <profiles>
+        <profile>
+            <id>gh</id>
+            <distributionManagement>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/gumutianqi/hidy-serverless</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+</project>

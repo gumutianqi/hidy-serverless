@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lakex</groupId>
+        <artifactId>hidy-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hidy-framework</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>hidy-framework</name>
+    <description>hidy-framework is a full magical framework.</description>
+
+    <url>https://hidy.lakex.cn</url>
+
+    <developers>
+        <developer>
+            <name>LarryKoo</name>
+            <email>gumutianqi@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>11</java.version>
+        <hidy-framework-core.version>0.0.1-SNAPSHOT</hidy-framework-core.version>
+    </properties>
+
+    <modules>
+         <module>hidy-framework-core</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

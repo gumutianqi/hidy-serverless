@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.lakex</groupId>
+        <artifactId>hidy-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hidy-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>hidy-example</name>
+    <description>hidy-Example project, Base on Hidy-Framework v1</description>
+    <url>https://hidy.lakex.cn</url>
+
+    <developers>
+        <developer>
+            <name>LarryKoo</name>
+            <email>gumutianqi@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>11</java.version>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <hidy.version>0.0.1-SNAPSHOT</hidy.version>
+    </properties>
+
+    <modules>
+        <module>getting-started</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 导入 Hidy Bom 组件依赖 -->
+            <dependency>
+                <groupId>cn.lakex</groupId>
+                <artifactId>hidy-bom</artifactId>
+                <version>${hidy.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 声明项目之间的依赖 -->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
